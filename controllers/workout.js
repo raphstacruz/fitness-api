@@ -26,6 +26,19 @@ module.exports.getMyWorkouts = (req, res) => {
     .catch(err => errorHandler(err, req, res));
 }
 
+module.exports.getMyWorkouts = (req, res) => {
+    Workout.find({})
+    .then(workouts => {
+        if (workouts.length){
+            return res.status(200).send({ workouts : workouts });
+        }
+        else {
+            return res.status(200).send({ message : 'No workouts found.' })
+        }
+    })
+    .catch(err => errorHandler(err, req, res));
+}
+
 module.exports.updateWorkout = (req, res) => {
     return Workout.findByIdAndUpdate(req.params.workoutId, req.body, { new: true })
     .then(updatedWorkout => {
