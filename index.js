@@ -7,6 +7,13 @@ require('dotenv').config();
 const app = express();
 app.use(express.json());
 
+const corsOptions = {
+    origin: "*",
+    credentials: true,
+    optionsSuccessStatus: 200
+}
+app.use(cors(corsOptions));
+
 const workoutRoutes = require("./routes/workout");
 const userRoutes = require("./routes/user");
 const { errorHandler } = require('./middleware/errorHandler');
