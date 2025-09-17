@@ -26,7 +26,7 @@ module.exports.getMyWorkouts = (req, res) => {
     .catch(err => errorHandler(err, req, res));
 }
 
-module.exports.getMyWorkouts = (req, res) => {
+module.exports.getAllWorkouts = (req, res) => {
     Workout.find({})
     .then(workouts => {
         if (workouts.length){
